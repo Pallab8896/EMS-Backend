@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Budget = require('../Models/budget-model');
 
 exports.addTotalBudget = function (req, res) {
-    const budget = new Category({
+    const budget = new Budget({
         _id: new mongoose.Types.ObjectId(),
         totalBudget: req.body.totalBudget,
     });
@@ -16,6 +16,19 @@ exports.addTotalBudget = function (req, res) {
             message: 'Total budget added successfully'
         });
     })
+}
+
+exports.getTotalBudget = function (req, res) {
+    Budget.find({}, (err, budget) => {
+        if (err) {
+            return res.status(400).send({
+                message: err
+            });
+        }
+        return res.status(200).json({
+            totalBudget: budget.length > 0 ? budget[0] : null
+        });
+    });
 }
 
 exports.updateTotalBudget = function (req, res) {

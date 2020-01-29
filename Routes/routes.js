@@ -16,6 +16,7 @@ module.exports = function (app) {
     app.route('/updateExpense').post(expense.updateExpense);
     app.route('/deleteExpense').post(expense.deleteExpense);
     app.route('/undoDeleteExpense').post(expense.undoDeleteExpense);
-    app.route('addTotalBudget').post(budget.addTotalBudget);
+    app.route('/addTotalBudget').post(budget.addTotalBudget);
+    app.route('/getTotalBudget').get(budget.getTotalBudget);
     app.route('/updateTotalBudget').post(budget.updateTotalBudget);
 }
